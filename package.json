@@ -1,0 +1,19 @@
+{
+  "name": "bootcampapi",
+  "version": "1.0.0",
+  "description": "Bootcamp Backend API",
+  "main": "server.js",
+  "scripts": {
+    "start": "SET NODE_ENV=production & node server",
+    "dev": "nodemon server"
+  },
+  "author": "Ezekiel Ajayi",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
