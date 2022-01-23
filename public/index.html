@@ -1,0 +1,1439 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="./css/index.css">
+<title>Bootcamp API
+&nbsp;|&nbsp;
+Backend API for the Bootcamp application to manage bootcamps, courses, reviews, users and authentication</title>
+<div class=container-fluid><div class=row><div class="col-md-12 collection-intro"><h3>Bootcamp API</h3><p><p>Backend API for the Bootcamp application to manage bootcamps, courses, reviews, users and authentication</div><div class=col-md-12><div class=col-md-3><ul><li><strong><a href=#Authentication>Authentication</a></strong><ul><li><a class=endpoint_menu href=#jump-Authentication-ForgotPassword>Forgot Password</a><li><a class=endpoint_menu href=#jump-Authentication-Getloggedinuserviatoken>Get logged in user via token</a><li><a class=endpoint_menu href=#jump-Authentication-Loginuser>Login user</a><li><a class=endpoint_menu href=#jump-Authentication-Logoutuser>Logout user</a><li><a class=endpoint_menu href=#jump-Authentication-Registeruser>Register user</a><li><a class=endpoint_menu href=#jump-Authentication-Resetpassword>Reset password</a><li><a class=endpoint_menu href=#jump-Authentication-Updatepassword>Update password</a><li><a class=endpoint_menu href=#jump-Authentication-Updateuserdetails>Update user details</a></ul><li><strong><a href=#Bootcamps>Bootcamps</a></strong><ul><li><a class=endpoint_menu href=#jump-Bootcamps-Createnewbootcamp>Create new bootcamp</a><li><a class=endpoint_menu href=#jump-Bootcamps-Deletebootcamp>Delete bootcamp</a><li><a class=endpoint_menu href=#jump-Bootcamps-Getallbootcamps>Get all bootcamps</a><li><a class=endpoint_menu href=#jump-Bootcamps-Getbootcampsbydistance>Get bootcamps by distance</a><li><a class=endpoint_menu href=#jump-Bootcamps-Getsinglebootcamp>Get single bootcamp</a><li><a class=endpoint_menu href=#jump-Bootcamps-Updatebootcamp>Update bootcamp</a><li><a class=endpoint_menu href=#jump-Bootcamps-Uploadphoto>Upload photo</a></ul><li><strong><a href=#Courses>Courses</a></strong><ul><li><a class=endpoint_menu href=#jump-Courses-Createcoursesforbootcamp>Create courses for bootcamp</a><li><a class=endpoint_menu href=#jump-Courses-DeleteCourse>Delete Course</a><li><a class=endpoint_menu href=#jump-Courses-Getallcourses>Get all courses</a><li><a class=endpoint_menu href=#jump-Courses-Getcoursesforbootcamp>Get courses for bootcamp</a><li><a class=endpoint_menu href=#jump-Courses-Getsinglecourse>Get single course</a><li><a class=endpoint_menu href=#jump-Courses-UpdateCourse>Update Course</a></ul><li><strong><a href=#Reviews>Reviews</a></strong><ul><li><a class=endpoint_menu href=#jump-Reviews-Addreviewforbootcamp>Add review for bootcamp</a><li><a class=endpoint_menu href=#jump-Reviews-Deletereview>Delete review</a><li><a class=endpoint_menu href=#jump-Reviews-Getallreviews>Get all reviews</a><li><a class=endpoint_menu href=#jump-Reviews-Getreviewsforbootcamp>Get reviews for bootcamp</a><li><a class=endpoint_menu href=#jump-Reviews-Getsinglereview>Get single review</a><li><a class=endpoint_menu href=#jump-Reviews-Updatereview>Update review</a></ul><li><strong><a href=#Users>Users</a></strong><ul><li><a class=endpoint_menu href=#jump-Users-Createnewuser>Create new user</a><li><a class=endpoint_menu href=#jump-Users-Deleteuser>Delete user</a><li><a class=endpoint_menu href=#jump-Users-Getallusers>Get all users</a><li><a class=endpoint_menu href=#jump-Users-Getsingleuser>Get single user</a><li><a class=endpoint_menu href=#jump-Users-Updateuser>Update user</a></ul></ul></div><div class=col-md-9><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=Authentication>Authentication
+<span class=badge>8</span></h3></div><div class=panel-body><p><p>Routes for user authentication including register, login, reset password, etc.<div class=request-item><div class=panel-group id=accordion-Authentication><div class="panel panel-success" id=jump-Authentication-ForgotPassword><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-success data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-ForgotPassword><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Forgot Password</strong> &nbsp;|&nbsp;
+<strong class="request-method border-success">POST</strong>
+&nbsp;
+{{URL}}/api/v1/auth/forgotpassword</h4></a></div><div id=collapse-Authentication-ForgotPassword class="panel-collapse collapse"><div class=panel-body><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;john@gmail.com&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_ForgotPassword_0_ForgotPassword>Forgot Password</select><br><section id=req_res_Authentication_ForgotPassword_0_ForgotPassword style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/forgotpassword</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;john@gmail.com&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: &#34;Email sent&#34;
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Authentication-Getloggedinuserviatoken><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Getloggedinuserviatoken><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get logged in user via token</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/auth/me</h4></a></div><div id=collapse-Authentication-Getloggedinuserviatoken class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Generate password token and send email</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_Getloggedinuserviatoken_0_Getloggedinuserviatoken>Get logged in user via token</select><br><section id=req_res_Authentication_Getloggedinuserviatoken_0_Getloggedinuserviatoken style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/me</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;61ec98f964fad5977f89e431&#34;,
+&#34;name&#34;: &#34;Wande Louis&#34;,
+&#34;email&#34;: &#34;wande@gmail.com&#34;,
+&#34;role&#34;: &#34;publisher&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T23:53:29.470Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-success" id=jump-Authentication-Loginuser><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-success data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Loginuser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Login user</strong> &nbsp;|&nbsp;
+<strong class="request-method border-success">POST</strong>
+&nbsp;
+{{URL}}/api/v1/auth/login</h4></a></div><div id=collapse-Authentication-Loginuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Login user</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;test@gmail.com&#34;,
+&#34;password&#34;: &#34;123456&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_Loginuser_0_Loginuser>Login user</select><br><section id=req_res_Authentication_Loginuser_0_Loginuser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/login</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;test@gmail.com&#34;,
+&#34;password&#34;: &#34;123456&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;sucess&#34;: true,
+&#34;token&#34;: &#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NjEwYmE0NjkxZWRkMzhkYmFiMiIsImlhdCI6MTY0Mjk0NDA0NSwiZXhwIjoxNjQ1NTM2MDQ1fQ.AqnkWehCH60xbT1sjuZHZJScvHia6JxMQRrOFVfCMPI&#34;
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Authentication-Logoutuser><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Logoutuser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Logout user</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/auth/logout</h4></a></div><div id=collapse-Authentication-Logoutuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Clear token cookie</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_Logoutuser_0_Logoutuser>Logout user</select><br><section id=req_res_Authentication_Logoutuser_0_Logoutuser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/logout</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-success" id=jump-Authentication-Registeruser><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-success data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Registeruser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Register user</strong> &nbsp;|&nbsp;
+<strong class="request-method border-success">POST</strong>
+&nbsp;
+{{URL}}/api/v1/auth/register</h4></a></div><div id=collapse-Authentication-Registeruser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Add user to database with encrypted password</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;Test Louis&#34;,
+&#34;email&#34;: &#34;test@gmail.com&#34;,
+&#34;role&#34;: &#34;publisher&#34;,
+&#34;password&#34;: &#34;123456&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_Registeruser_0_Registeruser>Register user</select><br><section id=req_res_Authentication_Registeruser_0_Registeruser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/register</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;Test Louis&#34;,
+&#34;email&#34;: &#34;test@gmail.com&#34;,
+&#34;role&#34;: &#34;publisher&#34;,
+&#34;password&#34;: &#34;123456&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;sucess&#34;: true,
+&#34;token&#34;: &#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NjEwYmE0NjkxZWRkMzhkYmFiMiIsImlhdCI6MTY0Mjk0NDAxNiwiZXhwIjoxNjQ1NTM2MDE2fQ.dGkjmVlxPCBaF7vEgxJK7x_EuRQ4SoO7efkiEKAB46w&#34;
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-Authentication-Resetpassword><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-warning data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Resetpassword><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Reset password</strong> &nbsp;|&nbsp;
+<strong class="request-method border-warning">PUT</strong>
+&nbsp;
+{{URL}}/api/v1/auth/resetpassword/03f421cde710078ccd0c397676058f9eeff25b42</h4></a></div><div id=collapse-Authentication-Resetpassword class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Reset user password using token.</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;password&#34;: &#34;1234567&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_Resetpassword_0_Resetpassword>Reset password</select><br><section id=req_res_Authentication_Resetpassword_0_Resetpassword style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/resetpassword/03f421cde710078ccd0c397676058f9eeff25b42</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;password&#34;: &#34;1234567&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;sucess&#34;: true,
+&#34;token&#34;: &#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0NSIsImlhdCI6MTY0Mjk0NDYxNCwiZXhwIjoxNjQ1NTM2NjE0fQ.ZSNBoS6ifb21AeoXk_b6Wri0HuG072ULgwJ7XahR_PY&#34;
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-Authentication-Updatepassword><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-warning data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Updatepassword><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update password</strong> &nbsp;|&nbsp;
+<strong class="request-method border-warning">PUT</strong>
+&nbsp;
+{{URL}}/api/v1/auth/updatepassword</h4></a></div><div id=collapse-Authentication-Updatepassword class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update logged in user password, send in the body currentPassword and newPassword</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;currentPassword&#34;: &#34;123456&#34;,
+&#34;newPassword&#34;: &#34;1234567&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_Updatepassword_0_Updatepassword>Update password</select><br><section id=req_res_Authentication_Updatepassword_0_Updatepassword style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/updatepassword</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;currentPassword&#34;: &#34;123456&#34;,
+&#34;newPassword&#34;: &#34;1234567&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;sucess&#34;: true,
+&#34;token&#34;: &#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0NSIsImlhdCI6MTY0Mjk0NDk5MiwiZXhwIjoxNjQ1NTM2OTkyfQ.ISFOVYKWo74PCxVmuYakO0YB4ct_-WicRmYoAh6_nFc&#34;
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-Authentication-Updateuserdetails><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-warning data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Updateuserdetails><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update user details</strong> &nbsp;|&nbsp;
+<strong class="request-method border-warning">PUT</strong>
+&nbsp;
+{{URL}}/api/v1/auth/updatedetails</h4></a></div><div id=collapse-Authentication-Updateuserdetails class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update logged in user name and email</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;john1@gmail.com&#34;,
+&#34;name&#34;: &#34;Smart Doe&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_Updateuserdetails_0_Updateuserdetails>Update user details</select><br><section id=req_res_Authentication_Updateuserdetails_0_Updateuserdetails style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/updatedetails</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;john1@gmail.com&#34;,
+&#34;name&#34;: &#34;Smart Doe&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;5d7a514b5d2c12c7449be045&#34;,
+&#34;name&#34;: &#34;Smart Doe&#34;,
+&#34;email&#34;: &#34;john1@gmail.com&#34;,
+&#34;role&#34;: &#34;publisher&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.501Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=Bootcamps>Bootcamps
+<span class=badge>7</span></h3></div><div class=panel-body><p><p>Bootcamps CRUD functionality<div class=request-item><div class=panel-group id=accordion-Bootcamps><div class="panel panel-success" id=jump-Bootcamps-Createnewbootcamp><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-success data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-Createnewbootcamp><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Create new bootcamp</strong> &nbsp;|&nbsp;
+<strong class="request-method border-success">POST</strong>
+&nbsp;
+{{URL}}/api/v1/bootcamps</h4></a></div><div id=collapse-Bootcamps-Createnewbootcamp class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Add new bootcamp to the database. Must be authenticated, must be publisher or admin</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;TEST Bootcamp&#34;,
+&#34;description&#34;: &#34;Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer&#34;,
+&#34;website&#34;: &#34;https://devworks.com&#34;,
+&#34;phone&#34;: &#34;(111) 111-1111&#34;,
+&#34;email&#34;: &#34;enroll@devworks.com&#34;,
+&#34;address&#34;: &#34;233 Bay State Rd Boston MA 02215&#34;,
+&#34;careers&#34;: [&#34;Web Development&#34;, &#34;UI/UX&#34;, &#34;Business&#34;],
+&#34;housing&#34;: true,
+&#34;jobAssistance&#34;: true,
+&#34;jobGuarantee&#34;: false,
+&#34;acceptGi&#34;: true
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Bootcamps_Createnewbootcamp_0_Createnewbootcamp>Create new bootcamp</select><br><section id=req_res_Bootcamps_Createnewbootcamp_0_Createnewbootcamp style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/bootcamps</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;TEST Bootcamp&#34;,
+&#34;description&#34;: &#34;Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer&#34;,
+&#34;website&#34;: &#34;https://devworks.com&#34;,
+&#34;phone&#34;: &#34;(111) 111-1111&#34;,
+&#34;email&#34;: &#34;enroll@devworks.com&#34;,
+&#34;address&#34;: &#34;233 Bay State Rd Boston MA 02215&#34;,
+&#34;careers&#34;: [&#34;Web Development&#34;, &#34;UI/UX&#34;, &#34;Business&#34;],
+&#34;housing&#34;: true,
+&#34;jobAssistance&#34;: true,
+&#34;jobGuarantee&#34;: false,
+&#34;acceptGi&#34;: true
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;name&#34;: &#34;TEST Bootcamp&#34;,
+&#34;description&#34;: &#34;Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer&#34;,
+&#34;website&#34;: &#34;https://devworks.com&#34;,
+&#34;phone&#34;: &#34;(111) 111-1111&#34;,
+&#34;email&#34;: &#34;enroll@devworks.com&#34;,
+&#34;location&#34;: {
+&#34;type&#34;: &#34;Point&#34;,
+&#34;coordinates&#34;: [
+-71.104059,
+42.350797
+],
+&#34;formattedAddress&#34;: &#34;233 Bay State Rd, Boston, MA 02215-1405, US&#34;,
+&#34;street&#34;: &#34;233 Bay State Rd&#34;,
+&#34;city&#34;: &#34;Boston&#34;,
+&#34;state&#34;: &#34;MA&#34;,
+&#34;zipcode&#34;: &#34;02215-1405&#34;,
+&#34;country&#34;: &#34;US&#34;
+},
+&#34;careers&#34;: [
+&#34;Web Development&#34;,
+&#34;UI/UX&#34;,
+&#34;Business&#34;
+],
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;housing&#34;: true,
+&#34;jobAssistance&#34;: true,
+&#34;jobGuarantee&#34;: false,
+&#34;acceptGi&#34;: true,
+&#34;user&#34;: &#34;61ec98f964fad5977f89e431&#34;,
+&#34;_id&#34;: &#34;61ec990c64fad5977f89e435&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T23:53:48.311Z&#34;,
+&#34;slug&#34;: &#34;test-bootcamp&#34;,
+&#34;__v&#34;: 0,
+&#34;id&#34;: &#34;61ec990c64fad5977f89e435&#34;
+},
+&#34;error&#34;: null
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>201</strong></section></div></div></div><div class="panel panel-danger" id=jump-Bootcamps-Deletebootcamp><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-danger data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-Deletebootcamp><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete bootcamp</strong> &nbsp;|&nbsp;
+<strong class="request-method border-danger">DELETE</strong>
+&nbsp;
+{{URL}}/api/v1/bootcamps/61ec990c64fad5977f89e435</h4></a></div><div id=collapse-Bootcamps-Deletebootcamp class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Delete bootcamp from the database.</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Bootcamps_Deletebootcamp_0_Deletebootcamp>Delete bootcamp</select><br><section id=req_res_Bootcamps_Deletebootcamp_0_Deletebootcamp style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/bootcamps/61ec990c64fad5977f89e435</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {},
+&#34;error&#34;: null
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Bootcamps-Getallbootcamps><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-Getallbootcamps><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all bootcamps</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/bootcamps</h4></a></div><div id=collapse-Bootcamps-Getallbootcamps class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Fetch all bootcamps from database. Includes pagination, filtering etc.</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Bootcamps_Getallbootcamps_0_Getallbootcamps>Get all bootcamps</select><br><section id=req_res_Bootcamps_Getallbootcamps_0_Getallbootcamps style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/bootcamps</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 4,
+&#34;pagination&#34;: {},
+&#34;data&#34;: [
+{
+&#34;location&#34;: {
+&#34;type&#34;: &#34;Point&#34;,
+&#34;coordinates&#34;: [
+-71.525911,
+41.483825
+],
+&#34;formattedAddress&#34;: &#34;45 Upper College Rd, Kingston, RI 02881-2003, US&#34;,
+&#34;street&#34;: &#34;45 Upper College Rd&#34;,
+&#34;city&#34;: &#34;Kingston&#34;,
+&#34;state&#34;: &#34;RI&#34;,
+&#34;zipcode&#34;: &#34;02881-2003&#34;,
+&#34;country&#34;: &#34;US&#34;
+},
+&#34;_id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;name&#34;: &#34;Devcentral Bootcamp&#34;,
+&#34;description&#34;: &#34;Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in front end and full stack web development&#34;,
+&#34;website&#34;: &#34;https://devcentral.com&#34;,
+&#34;phone&#34;: &#34;(444) 444-4444&#34;,
+&#34;email&#34;: &#34;enroll@devcentral.com&#34;,
+&#34;careers&#34;: [
+&#34;Mobile Development&#34;,
+&#34;Web Development&#34;,
+&#34;Data Science&#34;,
+&#34;Business&#34;
+],
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;housing&#34;: false,
+&#34;jobAssistance&#34;: true,
+&#34;jobGuarantee&#34;: true,
+&#34;acceptGi&#34;: true,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:22.136Z&#34;,
+&#34;slug&#34;: &#34;devcentral-bootcamp&#34;,
+&#34;__v&#34;: 0,
+&#34;averageCost&#34;: 6340,
+&#34;averageRating&#34;: 8,
+&#34;courses&#34;: [
+{
+&#34;_id&#34;: &#34;5d725cfec4ded7bcb480eaa5&#34;,
+&#34;title&#34;: &#34;Web Development&#34;,
+&#34;description&#34;: &#34;This course will teach you how to build high quality web applications with technologies like React, Node.js, PHP &amp; Laravel&#34;,
+&#34;weeks&#34;: &#34;8&#34;,
+&#34;tuition&#34;: 8000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.472Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725cfec4ded7bcb480eaa6&#34;,
+&#34;title&#34;: &#34;Software QA&#34;,
+&#34;description&#34;: &#34;This course will teach you everything you need to know about quality assurance&#34;,
+&#34;weeks&#34;: &#34;6&#34;,
+&#34;tuition&#34;: 5000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.473Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725cfec4ded7bcb480eaa7&#34;,
+&#34;title&#34;: &#34;IOS Development&#34;,
+&#34;description&#34;: &#34;Get started building mobile applications for IOS using Swift and other tools&#34;,
+&#34;weeks&#34;: &#34;8&#34;,
+&#34;tuition&#34;: 6000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.473Z&#34;,
+&#34;__v&#34;: 0
+}
+],
+&#34;id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;
+},
+{
+&#34;location&#34;: {
+&#34;type&#34;: &#34;Point&#34;,
+&#34;coordinates&#34;: [
+-73.200576,
+44.478305
+],
+&#34;formattedAddress&#34;: &#34;85 S Prospect St, Burlington, VT 05401-3444, US&#34;,
+&#34;street&#34;: &#34;85 S Prospect St&#34;,
+&#34;city&#34;: &#34;Burlington&#34;,
+&#34;state&#34;: &#34;VT&#34;,
+&#34;zipcode&#34;: &#34;05401-3444&#34;,
+&#34;country&#34;: &#34;US&#34;
+},
+&#34;_id&#34;: &#34;5d725a037b292f5f8ceff787&#34;,
+&#34;name&#34;: &#34;Codemasters&#34;,
+&#34;description&#34;: &#34;Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in full stack web development and data science&#34;,
+&#34;website&#34;: &#34;https://codemasters.com&#34;,
+&#34;phone&#34;: &#34;(333) 333-3333&#34;,
+&#34;email&#34;: &#34;enroll@codemasters.com&#34;,
+&#34;careers&#34;: [
+&#34;Web Development&#34;,
+&#34;Data Science&#34;,
+&#34;Business&#34;
+],
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;housing&#34;: false,
+&#34;jobAssistance&#34;: false,
+&#34;jobGuarantee&#34;: false,
+&#34;acceptGi&#34;: false,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc031&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:22.134Z&#34;,
+&#34;slug&#34;: &#34;codemasters&#34;,
+&#34;__v&#34;: 0,
+&#34;averageCost&#34;: 10500,
+&#34;averageRating&#34;: 5,
+&#34;courses&#34;: [
+{
+&#34;_id&#34;: &#34;5d725ce8c4ded7bcb480eaa3&#34;,
+&#34;title&#34;: &#34;Web Design &amp; Development&#34;,
+&#34;description&#34;: &#34;Get started building websites and web apps with HTML/CSS/JavaScript/PHP. We teach you&#34;,
+&#34;weeks&#34;: &#34;10&#34;,
+&#34;tuition&#34;: 9000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipAvailable&#34;: true,
+&#34;bootcamp&#34;: &#34;5d725a037b292f5f8ceff787&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc031&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.471Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725cfec4ded7bcb480eaa4&#34;,
+&#34;title&#34;: &#34;Data Science Program&#34;,
+&#34;description&#34;: &#34;In this course you will learn Python for data science, machine learning and big data tools&#34;,
+&#34;weeks&#34;: &#34;10&#34;,
+&#34;tuition&#34;: 12000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: &#34;5d725a037b292f5f8ceff787&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc031&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.472Z&#34;,
+&#34;__v&#34;: 0
+}
+],
+&#34;id&#34;: &#34;5d725a037b292f5f8ceff787&#34;
+},
+{
+&#34;location&#34;: {
+&#34;type&#34;: &#34;Point&#34;,
+&#34;coordinates&#34;: [
+-71.324147,
+42.650543
+],
+&#34;formattedAddress&#34;: &#34;220 Pawtucket St, Lowell, MA 01854-3502, US&#34;,
+&#34;street&#34;: &#34;220 Pawtucket St&#34;,
+&#34;city&#34;: &#34;Lowell&#34;,
+&#34;state&#34;: &#34;MA&#34;,
+&#34;zipcode&#34;: &#34;01854-3502&#34;,
+&#34;country&#34;: &#34;US&#34;
+},
+&#34;_id&#34;: &#34;5d713a66ec8f2b88b8f830b8&#34;,
+&#34;name&#34;: &#34;ModernTech Bootcamp&#34;,
+&#34;description&#34;: &#34;ModernTech has one goal, and that is to make you a rockstar developer and/or designer with a six figure salary. We teach both development and UI/UX&#34;,
+&#34;website&#34;: &#34;https://moderntech.com&#34;,
+&#34;phone&#34;: &#34;(222) 222-2222&#34;,
+&#34;email&#34;: &#34;enroll@moderntech.com&#34;,
+&#34;careers&#34;: [
+&#34;Web Development&#34;,
+&#34;UI/UX&#34;,
+&#34;Mobile Development&#34;
+],
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;housing&#34;: false,
+&#34;jobAssistance&#34;: true,
+&#34;jobGuarantee&#34;: false,
+&#34;acceptGi&#34;: true,
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be046&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:22.133Z&#34;,
+&#34;slug&#34;: &#34;moderntech-bootcamp&#34;,
+&#34;__v&#34;: 0,
+&#34;averageCost&#34;: 11000,
+&#34;averageRating&#34;: 5,
+&#34;courses&#34;: [
+{
+&#34;_id&#34;: &#34;5d725cb9c4ded7bcb480eaa1&#34;,
+&#34;title&#34;: &#34;Full Stack Web Dev&#34;,
+&#34;description&#34;: &#34;In this course you will learn all about the front end with HTML, CSS and JavaScript. You will master tools like Git and Webpack and also learn C# and ASP.NET with Postgres&#34;,
+&#34;weeks&#34;: &#34;10&#34;,
+&#34;tuition&#34;: 12000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: true,
+&#34;bootcamp&#34;: &#34;5d713a66ec8f2b88b8f830b8&#34;,
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be046&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.470Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725cd2c4ded7bcb480eaa2&#34;,
+&#34;title&#34;: &#34;UI/UX&#34;,
+&#34;description&#34;: &#34;In this course you will learn to create beautiful interfaces. It is a mix of design and development to create modern user experiences on both web and mobile&#34;,
+&#34;weeks&#34;: &#34;12&#34;,
+&#34;tuition&#34;: 10000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: true,
+&#34;bootcamp&#34;: &#34;5d713a66ec8f2b88b8f830b8&#34;,
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be046&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.471Z&#34;,
+&#34;__v&#34;: 0
+}
+],
+&#34;id&#34;: &#34;5d713a66ec8f2b88b8f830b8&#34;
+},
+{
+&#34;location&#34;: {
+&#34;type&#34;: &#34;Point&#34;,
+&#34;coordinates&#34;: [
+-71.104059,
+42.350797
+],
+&#34;formattedAddress&#34;: &#34;233 Bay State Rd, Boston, MA 02215-1405, US&#34;,
+&#34;street&#34;: &#34;233 Bay State Rd&#34;,
+&#34;city&#34;: &#34;Boston&#34;,
+&#34;state&#34;: &#34;MA&#34;,
+&#34;zipcode&#34;: &#34;02215-1405&#34;,
+&#34;country&#34;: &#34;US&#34;
+},
+&#34;_id&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;,
+&#34;name&#34;: &#34;Devworks Bootcamp&#34;,
+&#34;description&#34;: &#34;Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer&#34;,
+&#34;website&#34;: &#34;https://devworks.com&#34;,
+&#34;phone&#34;: &#34;(111) 111-1111&#34;,
+&#34;email&#34;: &#34;enroll@devworks.com&#34;,
+&#34;careers&#34;: [
+&#34;Web Development&#34;,
+&#34;UI/UX&#34;,
+&#34;Business&#34;
+],
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;housing&#34;: true,
+&#34;jobAssistance&#34;: true,
+&#34;jobGuarantee&#34;: false,
+&#34;acceptGi&#34;: true,
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be045&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:22.130Z&#34;,
+&#34;slug&#34;: &#34;devworks-bootcamp&#34;,
+&#34;__v&#34;: 0,
+&#34;averageCost&#34;: 9000,
+&#34;averageRating&#34;: 8,
+&#34;courses&#34;: [
+{
+&#34;_id&#34;: &#34;5d725a4a7b292f5f8ceff789&#34;,
+&#34;title&#34;: &#34;Front End Web Development&#34;,
+&#34;description&#34;: &#34;This course will provide you with all of the essentials to become a successful frontend web developer. You will learn to master HTML, CSS and front end JavaScript, along with tools like Git, VSCode and front end frameworks like Vue&#34;,
+&#34;weeks&#34;: &#34;8&#34;,
+&#34;tuition&#34;: 8000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipAvailable&#34;: true,
+&#34;bootcamp&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;,
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be045&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.468Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725c84c4ded7bcb480eaa0&#34;,
+&#34;title&#34;: &#34;Full Stack Web Development&#34;,
+&#34;description&#34;: &#34;In this course you will learn full stack web development, first learning all about the frontend with HTML/CSS/JS/Vue and then the backend with Node.js/Express/MongoDB&#34;,
+&#34;weeks&#34;: &#34;12&#34;,
+&#34;tuition&#34;: 10000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: true,
+&#34;bootcamp&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;,
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be045&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.469Z&#34;,
+&#34;__v&#34;: 0
+}
+],
+&#34;id&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;
+}
+]
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Bootcamps-Getbootcampsbydistance><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-Getbootcampsbydistance><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get bootcamps by distance</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/bootcamps/radius/02118/10</h4></a></div><div id=collapse-Bootcamps-Getbootcampsbydistance class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get bootcamps within the radius of a specific zipcode.</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Bootcamps_Getbootcampsbydistance_0_Getbootcampsbydistance>Get bootcamps by distance</select><br><section id=req_res_Bootcamps_Getbootcampsbydistance_0_Getbootcampsbydistance style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/bootcamps/radius/02118/10</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 2,
+&#34;data&#34;: [
+{
+&#34;location&#34;: {
+&#34;type&#34;: &#34;Point&#34;,
+&#34;coordinates&#34;: [
+-71.104059,
+42.350797
+],
+&#34;formattedAddress&#34;: &#34;233 Bay State Rd, Boston, MA 02215-1405, US&#34;,
+&#34;street&#34;: &#34;233 Bay State Rd&#34;,
+&#34;city&#34;: &#34;Boston&#34;,
+&#34;state&#34;: &#34;MA&#34;,
+&#34;zipcode&#34;: &#34;02215-1405&#34;,
+&#34;country&#34;: &#34;US&#34;
+},
+&#34;_id&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;,
+&#34;name&#34;: &#34;Devworks Bootcamp&#34;,
+&#34;description&#34;: &#34;Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer&#34;,
+&#34;website&#34;: &#34;https://devworks.com&#34;,
+&#34;phone&#34;: &#34;(111) 111-1111&#34;,
+&#34;email&#34;: &#34;enroll@devworks.com&#34;,
+&#34;careers&#34;: [
+&#34;Web Development&#34;,
+&#34;UI/UX&#34;,
+&#34;Business&#34;
+],
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;housing&#34;: true,
+&#34;jobAssistance&#34;: true,
+&#34;jobGuarantee&#34;: false,
+&#34;acceptGi&#34;: true,
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be045&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:22.130Z&#34;,
+&#34;slug&#34;: &#34;devworks-bootcamp&#34;,
+&#34;__v&#34;: 0,
+&#34;averageCost&#34;: 9000,
+&#34;averageRating&#34;: 8,
+&#34;id&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;
+},
+{
+&#34;location&#34;: {
+&#34;type&#34;: &#34;Point&#34;,
+&#34;coordinates&#34;: [
+-71.104059,
+42.350797
+],
+&#34;formattedAddress&#34;: &#34;233 Bay State Rd, Boston, MA 02215-1405, US&#34;,
+&#34;street&#34;: &#34;233 Bay State Rd&#34;,
+&#34;city&#34;: &#34;Boston&#34;,
+&#34;state&#34;: &#34;MA&#34;,
+&#34;zipcode&#34;: &#34;02215-1405&#34;,
+&#34;country&#34;: &#34;US&#34;
+},
+&#34;_id&#34;: &#34;61ec990c64fad5977f89e435&#34;,
+&#34;name&#34;: &#34;TEST Bootcamp&#34;,
+&#34;description&#34;: &#34;Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer&#34;,
+&#34;website&#34;: &#34;https://devworks.com&#34;,
+&#34;phone&#34;: &#34;(111) 111-1111&#34;,
+&#34;email&#34;: &#34;enroll@devworks.com&#34;,
+&#34;careers&#34;: [
+&#34;Web Development&#34;,
+&#34;UI/UX&#34;,
+&#34;Business&#34;
+],
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;housing&#34;: true,
+&#34;jobAssistance&#34;: true,
+&#34;jobGuarantee&#34;: false,
+&#34;acceptGi&#34;: true,
+&#34;user&#34;: &#34;61ec98f964fad5977f89e431&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T23:53:48.311Z&#34;,
+&#34;slug&#34;: &#34;test-bootcamp&#34;,
+&#34;__v&#34;: 0,
+&#34;id&#34;: &#34;61ec990c64fad5977f89e435&#34;
+}
+],
+&#34;error&#34;: null
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Bootcamps-Getsinglebootcamp><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-Getsinglebootcamp><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get single bootcamp</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/bootcamps/5d725a1b7b292f5f8ceff788</h4></a></div><div id=collapse-Bootcamps-Getsinglebootcamp class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get single bootcamp by ID</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Bootcamps_Getsinglebootcamp_0_Getsinglebootcamp>Get single bootcamp</select><br><section id=req_res_Bootcamps_Getsinglebootcamp_0_Getsinglebootcamp style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/bootcamps/5d725a1b7b292f5f8ceff788</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;location&#34;: {
+&#34;type&#34;: &#34;Point&#34;,
+&#34;coordinates&#34;: [
+-71.525911,
+41.483825
+],
+&#34;formattedAddress&#34;: &#34;45 Upper College Rd, Kingston, RI 02881-2003, US&#34;,
+&#34;street&#34;: &#34;45 Upper College Rd&#34;,
+&#34;city&#34;: &#34;Kingston&#34;,
+&#34;state&#34;: &#34;RI&#34;,
+&#34;zipcode&#34;: &#34;02881-2003&#34;,
+&#34;country&#34;: &#34;US&#34;
+},
+&#34;_id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;name&#34;: &#34;Devcentral Bootcamp&#34;,
+&#34;description&#34;: &#34;Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in front end and full stack web development&#34;,
+&#34;website&#34;: &#34;https://devcentral.com&#34;,
+&#34;phone&#34;: &#34;(444) 444-4444&#34;,
+&#34;email&#34;: &#34;enroll@devcentral.com&#34;,
+&#34;careers&#34;: [
+&#34;Mobile Development&#34;,
+&#34;Web Development&#34;,
+&#34;Data Science&#34;,
+&#34;Business&#34;
+],
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;housing&#34;: false,
+&#34;jobAssistance&#34;: true,
+&#34;jobGuarantee&#34;: true,
+&#34;acceptGi&#34;: true,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:22.136Z&#34;,
+&#34;slug&#34;: &#34;devcentral-bootcamp&#34;,
+&#34;__v&#34;: 0,
+&#34;averageCost&#34;: 6340,
+&#34;averageRating&#34;: 8,
+&#34;id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;
+},
+&#34;error&#34;: null
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-Bootcamps-Updatebootcamp><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-warning data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-Updatebootcamp><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update bootcamp</strong> &nbsp;|&nbsp;
+<strong class="request-method border-warning">PUT</strong>
+&nbsp;
+{{URL}}/api/v1/bootcamps/61ec990c64fad5977f89e435</h4></a></div><div id=collapse-Bootcamps-Updatebootcamp class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update single bootcamp in the database.</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;New test bootcamp&#34;,
+&#34;housing&#34;: false
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Bootcamps_Updatebootcamp_0_Updatebootcamp>Update bootcamp</select><br><section id=req_res_Bootcamps_Updatebootcamp_0_Updatebootcamp style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/bootcamps/61ec990c64fad5977f89e435</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;New test bootcamp&#34;,
+&#34;housing&#34;: false
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;location&#34;: {
+&#34;type&#34;: &#34;Point&#34;,
+&#34;coordinates&#34;: [
+-71.525911,
+41.483825
+],
+&#34;formattedAddress&#34;: &#34;45 Upper College Rd, Kingston, RI 02881-2003, US&#34;,
+&#34;street&#34;: &#34;45 Upper College Rd&#34;,
+&#34;city&#34;: &#34;Kingston&#34;,
+&#34;state&#34;: &#34;RI&#34;,
+&#34;zipcode&#34;: &#34;02881-2003&#34;,
+&#34;country&#34;: &#34;US&#34;
+},
+&#34;_id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;name&#34;: &#34;New test bootcamp&#34;,
+&#34;description&#34;: &#34;Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in front end and full stack web development&#34;,
+&#34;website&#34;: &#34;https://devcentral.com&#34;,
+&#34;phone&#34;: &#34;(444) 444-4444&#34;,
+&#34;email&#34;: &#34;enroll@devcentral.com&#34;,
+&#34;careers&#34;: [
+&#34;Mobile Development&#34;,
+&#34;Web Development&#34;,
+&#34;Data Science&#34;,
+&#34;Business&#34;
+],
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;housing&#34;: false,
+&#34;jobAssistance&#34;: true,
+&#34;jobGuarantee&#34;: true,
+&#34;acceptGi&#34;: true,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:22.136Z&#34;,
+&#34;slug&#34;: &#34;devcentral-bootcamp&#34;,
+&#34;__v&#34;: 0,
+&#34;averageCost&#34;: 6340,
+&#34;averageRating&#34;: 8,
+&#34;id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;
+},
+&#34;error&#34;: null
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-Bootcamps-Uploadphoto><div class=panel-heading><small class="pull-right text-muted">formdata</small>
+<a class=text-warning data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-Uploadphoto><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Upload photo</strong> &nbsp;|&nbsp;
+<strong class="request-method border-warning">PUT</strong>
+&nbsp;
+{{URL}}/api/v1/bootcamps/61ec990c64fad5977f89e435/photo</h4></a></div><div id=collapse-Bootcamps-Uploadphoto class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Route to upload a bootcamp photo</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>file<td><td></table><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Bootcamps_Uploadphoto_0_Uploadphoto>Upload photo</select><br><section id=req_res_Bootcamps_Uploadphoto_0_Uploadphoto style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/bootcamps/61ec990c64fad5977f89e435/photo</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>file<td><td></table><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: &#34;photo_61ec990c64fad5977f89e435.jpg&#34;,
+&#34;error&#34;: null
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=Courses>Courses
+<span class=badge>6</span></h3></div><div class=panel-body><p><p>Create, Read, Update and Delete courses<div class=request-item><div class=panel-group id=accordion-Courses><div class="panel panel-success" id=jump-Courses-Createcoursesforbootcamp><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-success data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-Createcoursesforbootcamp><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Create courses for bootcamp</strong> &nbsp;|&nbsp;
+<strong class="request-method border-success">POST</strong>
+&nbsp;
+{{URL}}/api/v1/bootcamps/61ed4e8aba4691edd38dba9f/courses</h4></a></div><div id=collapse-Courses-Createcoursesforbootcamp class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Add course to bootcamp</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;title&#34;: &#34;Test Web Development 2&#34;,
+&#34;description&#34;: &#34;This course will provide you with all of the essentials to become a successful frontend web developer. You will learn to master HTML, CSS and front end JavaScript, along with tools like Git, VSCode and front end frameworks like Vue&#34;,
+&#34;weeks&#34;: 8,
+&#34;tuition&#34;: 8000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipsAvailable&#34;: true
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Courses_Createcoursesforbootcamp_0_Createcoursesforbootcamp>Create courses for bootcamp</select><br><section id=req_res_Courses_Createcoursesforbootcamp_0_Createcoursesforbootcamp style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/bootcamps/61ed4e8aba4691edd38dba9f/courses</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;title&#34;: &#34;Test Web Development 2&#34;,
+&#34;description&#34;: &#34;This course will provide you with all of the essentials to become a successful frontend web developer. You will learn to master HTML, CSS and front end JavaScript, along with tools like Git, VSCode and front end frameworks like Vue&#34;,
+&#34;weeks&#34;: 8,
+&#34;tuition&#34;: 8000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipsAvailable&#34;: true
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;title&#34;: &#34;Test Web Development 2&#34;,
+&#34;description&#34;: &#34;This course will provide you with all of the essentials to become a successful frontend web developer. You will learn to master HTML, CSS and front end JavaScript, along with tools like Git, VSCode and front end frameworks like Vue&#34;,
+&#34;weeks&#34;: &#34;8&#34;,
+&#34;tuition&#34;: 8000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: &#34;61ed4e8aba4691edd38dba9f&#34;,
+&#34;user&#34;: &#34;61ec98f964fad5977f89e431&#34;,
+&#34;_id&#34;: &#34;61ed4ea4ba4691edd38dbaa3&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T12:48:36.110Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>201</strong></section></div></div></div><div class="panel panel-danger" id=jump-Courses-DeleteCourse><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-danger data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-DeleteCourse><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete Course</strong> &nbsp;|&nbsp;
+<strong class="request-method border-danger">DELETE</strong>
+&nbsp;
+{{URL}}/api/v1/courses/61ed4ea4ba4691edd38dbaa3</h4></a></div><div id=collapse-Courses-DeleteCourse class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Delete course in the database.</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Courses_DeleteCourse_0_DeleteCourse>Delete Course</select><br><section id=req_res_Courses_DeleteCourse_0_DeleteCourse style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/courses/61ed4ea4ba4691edd38dbaa3</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Courses-Getallcourses><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-Getallcourses><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all courses</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/courses</h4></a></div><div id=collapse-Courses-Getallcourses class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get all coursed in the database.</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Courses_Getallcourses_0_Getallcourses>Get all courses</select><br><section id=req_res_Courses_Getallcourses_0_Getallcourses style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/courses</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 9,
+&#34;pagination&#34;: {},
+&#34;data&#34;: [
+{
+&#34;_id&#34;: &#34;5d725cfec4ded7bcb480eaa6&#34;,
+&#34;title&#34;: &#34;Software QA&#34;,
+&#34;description&#34;: &#34;This course will teach you everything you need to know about quality assurance&#34;,
+&#34;weeks&#34;: &#34;6&#34;,
+&#34;tuition&#34;: 5000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: {
+&#34;_id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;name&#34;: &#34;New test bootcamp&#34;,
+&#34;description&#34;: &#34;Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in front end and full stack web development&#34;,
+&#34;id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;
+},
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.473Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725cfec4ded7bcb480eaa7&#34;,
+&#34;title&#34;: &#34;IOS Development&#34;,
+&#34;description&#34;: &#34;Get started building mobile applications for IOS using Swift and other tools&#34;,
+&#34;weeks&#34;: &#34;8&#34;,
+&#34;tuition&#34;: 6000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: {
+&#34;_id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;name&#34;: &#34;New test bootcamp&#34;,
+&#34;description&#34;: &#34;Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in front end and full stack web development&#34;,
+&#34;id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;
+},
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.473Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725cfec4ded7bcb480eaa4&#34;,
+&#34;title&#34;: &#34;Data Science Program&#34;,
+&#34;description&#34;: &#34;In this course you will learn Python for data science, machine learning and big data tools&#34;,
+&#34;weeks&#34;: &#34;10&#34;,
+&#34;tuition&#34;: 12000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: {
+&#34;_id&#34;: &#34;5d725a037b292f5f8ceff787&#34;,
+&#34;name&#34;: &#34;Codemasters&#34;,
+&#34;description&#34;: &#34;Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in full stack web development and data science&#34;,
+&#34;id&#34;: &#34;5d725a037b292f5f8ceff787&#34;
+},
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc031&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.472Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725cfec4ded7bcb480eaa5&#34;,
+&#34;title&#34;: &#34;Web Development&#34;,
+&#34;description&#34;: &#34;This course will teach you how to build high quality web applications with technologies like React, Node.js, PHP &amp; Laravel&#34;,
+&#34;weeks&#34;: &#34;8&#34;,
+&#34;tuition&#34;: 8000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: {
+&#34;_id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;name&#34;: &#34;New test bootcamp&#34;,
+&#34;description&#34;: &#34;Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in front end and full stack web development&#34;,
+&#34;id&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;
+},
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.472Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725cd2c4ded7bcb480eaa2&#34;,
+&#34;title&#34;: &#34;UI/UX&#34;,
+&#34;description&#34;: &#34;In this course you will learn to create beautiful interfaces. It is a mix of design and development to create modern user experiences on both web and mobile&#34;,
+&#34;weeks&#34;: &#34;12&#34;,
+&#34;tuition&#34;: 10000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: true,
+&#34;bootcamp&#34;: {
+&#34;_id&#34;: &#34;5d713a66ec8f2b88b8f830b8&#34;,
+&#34;name&#34;: &#34;ModernTech Bootcamp&#34;,
+&#34;description&#34;: &#34;ModernTech has one goal, and that is to make you a rockstar developer and/or designer with a six figure salary. We teach both development and UI/UX&#34;,
+&#34;id&#34;: &#34;5d713a66ec8f2b88b8f830b8&#34;
+},
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be046&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.471Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725ce8c4ded7bcb480eaa3&#34;,
+&#34;title&#34;: &#34;Web Design &amp; Development&#34;,
+&#34;description&#34;: &#34;Get started building websites and web apps with HTML/CSS/JavaScript/PHP. We teach you&#34;,
+&#34;weeks&#34;: &#34;10&#34;,
+&#34;tuition&#34;: 9000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipAvailable&#34;: true,
+&#34;bootcamp&#34;: {
+&#34;_id&#34;: &#34;5d725a037b292f5f8ceff787&#34;,
+&#34;name&#34;: &#34;Codemasters&#34;,
+&#34;description&#34;: &#34;Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in full stack web development and data science&#34;,
+&#34;id&#34;: &#34;5d725a037b292f5f8ceff787&#34;
+},
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc031&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.471Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725cb9c4ded7bcb480eaa1&#34;,
+&#34;title&#34;: &#34;Full Stack Web Dev&#34;,
+&#34;description&#34;: &#34;In this course you will learn all about the front end with HTML, CSS and JavaScript. You will master tools like Git and Webpack and also learn C# and ASP.NET with Postgres&#34;,
+&#34;weeks&#34;: &#34;10&#34;,
+&#34;tuition&#34;: 12000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: true,
+&#34;bootcamp&#34;: {
+&#34;_id&#34;: &#34;5d713a66ec8f2b88b8f830b8&#34;,
+&#34;name&#34;: &#34;ModernTech Bootcamp&#34;,
+&#34;description&#34;: &#34;ModernTech has one goal, and that is to make you a rockstar developer and/or designer with a six figure salary. We teach both development and UI/UX&#34;,
+&#34;id&#34;: &#34;5d713a66ec8f2b88b8f830b8&#34;
+},
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be046&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.470Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725c84c4ded7bcb480eaa0&#34;,
+&#34;title&#34;: &#34;Full Stack Web Development&#34;,
+&#34;description&#34;: &#34;In this course you will learn full stack web development, first learning all about the frontend with HTML/CSS/JS/Vue and then the backend with Node.js/Express/MongoDB&#34;,
+&#34;weeks&#34;: &#34;12&#34;,
+&#34;tuition&#34;: 10000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: true,
+&#34;bootcamp&#34;: {
+&#34;_id&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;,
+&#34;name&#34;: &#34;Devworks Bootcamp&#34;,
+&#34;description&#34;: &#34;Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer&#34;,
+&#34;id&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;
+},
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be045&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.469Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725a4a7b292f5f8ceff789&#34;,
+&#34;title&#34;: &#34;Front End Web Development&#34;,
+&#34;description&#34;: &#34;This course will provide you with all of the essentials to become a successful frontend web developer. You will learn to master HTML, CSS and front end JavaScript, along with tools like Git, VSCode and front end frameworks like Vue&#34;,
+&#34;weeks&#34;: &#34;8&#34;,
+&#34;tuition&#34;: 8000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipAvailable&#34;: true,
+&#34;bootcamp&#34;: {
+&#34;_id&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;,
+&#34;name&#34;: &#34;Devworks Bootcamp&#34;,
+&#34;description&#34;: &#34;Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer&#34;,
+&#34;id&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;
+},
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be045&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.468Z&#34;,
+&#34;__v&#34;: 0
+}
+]
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Courses-Getcoursesforbootcamp><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-Getcoursesforbootcamp><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get courses for bootcamp</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/bootcamps/5d725a1b7b292f5f8ceff788/courses</h4></a></div><div id=collapse-Courses-Getcoursesforbootcamp class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get the specific courses for a bootcamp</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Courses_Getcoursesforbootcamp_0_Getcoursesforbootcamp>Get courses for bootcamp</select><br><section id=req_res_Courses_Getcoursesforbootcamp_0_Getcoursesforbootcamp style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/bootcamps/5d725a1b7b292f5f8ceff788/courses</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 3,
+&#34;data&#34;: [
+{
+&#34;_id&#34;: &#34;5d725cfec4ded7bcb480eaa5&#34;,
+&#34;title&#34;: &#34;Web Development&#34;,
+&#34;description&#34;: &#34;This course will teach you how to build high quality web applications with technologies like React, Node.js, PHP &amp; Laravel&#34;,
+&#34;weeks&#34;: &#34;8&#34;,
+&#34;tuition&#34;: 8000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.472Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725cfec4ded7bcb480eaa6&#34;,
+&#34;title&#34;: &#34;Software QA&#34;,
+&#34;description&#34;: &#34;This course will teach you everything you need to know about quality assurance&#34;,
+&#34;weeks&#34;: &#34;6&#34;,
+&#34;tuition&#34;: 5000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.473Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d725cfec4ded7bcb480eaa7&#34;,
+&#34;title&#34;: &#34;IOS Development&#34;,
+&#34;description&#34;: &#34;Get started building mobile applications for IOS using Swift and other tools&#34;,
+&#34;weeks&#34;: &#34;8&#34;,
+&#34;tuition&#34;: 6000,
+&#34;minimumSkill&#34;: &#34;intermediate&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: &#34;5d725a1b7b292f5f8ceff788&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.473Z&#34;,
+&#34;__v&#34;: 0
+}
+]
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Courses-Getsinglecourse><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-Getsinglecourse><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get single course</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/courses/5d725a4a7b292f5f8ceff789</h4></a></div><div id=collapse-Courses-Getsinglecourse class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get a single course by its Id</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Courses_Getsinglecourse_0_Getsinglecourse>Get single course</select><br><section id=req_res_Courses_Getsinglecourse_0_Getsinglecourse style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/courses/5d725a4a7b292f5f8ceff789</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;5d725a4a7b292f5f8ceff789&#34;,
+&#34;title&#34;: &#34;Front End Web Development&#34;,
+&#34;description&#34;: &#34;This course will provide you with all of the essentials to become a successful frontend web developer. You will learn to master HTML, CSS and front end JavaScript, along with tools like Git, VSCode and front end frameworks like Vue&#34;,
+&#34;weeks&#34;: &#34;8&#34;,
+&#34;tuition&#34;: 8000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipAvailable&#34;: true,
+&#34;bootcamp&#34;: {
+&#34;_id&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;,
+&#34;name&#34;: &#34;Devworks Bootcamp&#34;,
+&#34;description&#34;: &#34;Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer&#34;,
+&#34;id&#34;: &#34;5d713995b721c3bb38c1f5d0&#34;
+},
+&#34;user&#34;: &#34;5d7a514b5d2c12c7449be045&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:23.468Z&#34;,
+&#34;__v&#34;: 0
+},
+&#34;error&#34;: null
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-Courses-UpdateCourse><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-warning data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-UpdateCourse><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update Course</strong> &nbsp;|&nbsp;
+<strong class="request-method border-warning">PUT</strong>
+&nbsp;
+{{URL}}/api/v1/courses/61ed4ea4ba4691edd38dbaa3</h4></a></div><div id=collapse-Courses-UpdateCourse class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update specific course</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;tuition&#34;: 12000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Courses_UpdateCourse_0_UpdateCourse>Update Course</select><br><section id=req_res_Courses_UpdateCourse_0_UpdateCourse style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/courses/61ed4ea4ba4691edd38dbaa3</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;tuition&#34;: 12000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;61ed4ea4ba4691edd38dbaa3&#34;,
+&#34;title&#34;: &#34;Test Web Development 2&#34;,
+&#34;description&#34;: &#34;This course will provide you with all of the essentials to become a successful frontend web developer. You will learn to master HTML, CSS and front end JavaScript, along with tools like Git, VSCode and front end frameworks like Vue&#34;,
+&#34;weeks&#34;: &#34;8&#34;,
+&#34;tuition&#34;: 12000,
+&#34;minimumSkill&#34;: &#34;beginner&#34;,
+&#34;scholarshipAvailable&#34;: false,
+&#34;bootcamp&#34;: &#34;61ed4e8aba4691edd38dba9f&#34;,
+&#34;user&#34;: &#34;61ec98f964fad5977f89e431&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T12:48:36.110Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=Reviews>Reviews
+<span class=badge>6</span></h3></div><div class=panel-body><p><p>Manage course reviews<div class=request-item><div class=panel-group id=accordion-Reviews><div class="panel panel-success" id=jump-Reviews-Addreviewforbootcamp><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-success data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-Addreviewforbootcamp><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Add review for bootcamp</strong> &nbsp;|&nbsp;
+<strong class="request-method border-success">POST</strong>
+&nbsp;
+{{URL}}/api/v1/bootcamps/5d713a66ec8f2b88b8f830b8/reviews</h4></a></div><div id=collapse-Reviews-Addreviewforbootcamp class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Insert review for a specific bootcamp</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;title&#34;: &#34;The bootcamp is timely&#34;,
+&#34;text&#34;: &#34;Good Tutors&#34;,
+&#34;rating&#34;: 5
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Reviews_Addreviewforbootcamp_0_Addreviewforbootcamp>Add review for bootcamp</select><br><section id=req_res_Reviews_Addreviewforbootcamp_0_Addreviewforbootcamp style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/bootcamps/5d713a66ec8f2b88b8f830b8/reviews</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;title&#34;: &#34;The bootcamp is timely&#34;,
+&#34;text&#34;: &#34;Good Tutors&#34;,
+&#34;rating&#34;: 5
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;title&#34;: &#34;The bootcamp is timely&#34;,
+&#34;text&#34;: &#34;Good Tutors&#34;,
+&#34;rating&#34;: 5,
+&#34;bootcamp&#34;: &#34;5d713a66ec8f2b88b8f830b8&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc037&#34;,
+&#34;_id&#34;: &#34;61ed5a8f1552f3ba304f2849&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:39:27.476Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>201</strong></section></div></div></div><div class="panel panel-danger" id=jump-Reviews-Deletereview><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-danger data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-Deletereview><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete review</strong> &nbsp;|&nbsp;
+<strong class="request-method border-danger">DELETE</strong>
+&nbsp;
+{{URL}}/api/v1/reviews/61ed5a8f1552f3ba304f2849</h4></a></div><div id=collapse-Reviews-Deletereview class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Delete review from the database</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Reviews_Deletereview_0_Deletereview>Delete review</select><br><section id=req_res_Reviews_Deletereview_0_Deletereview style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/reviews/61ed5a8f1552f3ba304f2849</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Reviews-Getallreviews><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-Getallreviews><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all reviews</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/reviews</h4></a></div><div id=collapse-Reviews-Getallreviews class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get all reviews from the database and populate with bootcamp name and description</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Reviews_Getallreviews_0_Getallreviews>Get all reviews</select><br><section id=req_res_Reviews_Getallreviews_0_Getallreviews style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/reviews</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 7,
+&#34;pagination&#34;: {},
+&#34;data&#34;: [
+{
+&#34;_id&#34;: &#34;61ec0e63a1c85bb9bd395d35&#34;,
+&#34;text&#34;: &#34;Affordable and elegant&#34;,
+&#34;rating&#34;: 9,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebe8b7c48be56bbbd68a81&#34;,
+&#34;name&#34;: &#34;Airpods Wireless Bluetooth Headphones&#34;,
+&#34;description&#34;: &#34;Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working&#34;,
+&#34;id&#34;: &#34;61ebe8b7c48be56bbbd68a81&#34;
+},
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:02:11.420Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:02:11.420Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0df8a1c85bb9bd395d27&#34;,
+&#34;text&#34;: &#34;Great product&#34;,
+&#34;rating&#34;: 6,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebeae7c48be56bbbd68a8f&#34;,
+&#34;name&#34;: &#34;Sony Playstation 4 Pro White Version&#34;,
+&#34;description&#34;: &#34;The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music&#34;,
+&#34;id&#34;: &#34;61ebeae7c48be56bbbd68a8f&#34;
+},
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:00:24.616Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:00:24.616Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0dc9a1c85bb9bd395d20&#34;,
+&#34;text&#34;: &#34;It is working perfectly well&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebeb00c48be56bbbd68a92&#34;,
+&#34;name&#34;: &#34;Amazon Echo Dot 3rd Generation&#34;,
+&#34;description&#34;: &#34;Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space&#34;,
+&#34;id&#34;: &#34;61ebeb00c48be56bbbd68a92&#34;
+},
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:59:37.462Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:59:37.462Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0c2aa1c85bb9bd395d11&#34;,
+&#34;text&#34;: &#34;It is working perfectly well&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;name&#34;: &#34;iPhone 11 Pro 256GB Memory&#34;,
+&#34;description&#34;: &#34;Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life&#34;,
+&#34;id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;
+},
+&#34;user&#34;: &#34;61ebfcdbc48be56bbbd68aab&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:52:42.995Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:52:42.995Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0ba8a1c85bb9bd395d07&#34;,
+&#34;text&#34;: &#34;The product is fine&#34;,
+&#34;rating&#34;: 7,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;,
+&#34;name&#34;: &#34;Logitech G-Series Gaming Mouse&#34;,
+&#34;description&#34;: &#34;Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience&#34;,
+&#34;id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;
+},
+&#34;user&#34;: &#34;61ebfcdbc48be56bbbd68aab&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:50:32.148Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:50:32.148Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebffaba1c85bb9bd395ced&#34;,
+&#34;text&#34;: &#34;The product is durable&#34;,
+&#34;rating&#34;: 9,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;,
+&#34;name&#34;: &#34;Logitech G-Series Gaming Mouse&#34;,
+&#34;description&#34;: &#34;Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience&#34;,
+&#34;id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;
+},
+&#34;user&#34;: &#34;61ebfcf9c48be56bbbd68aad&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T12:59:23.402Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T12:59:23.402Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebfddbc48be56bbbd68ab0&#34;,
+&#34;text&#34;: &#34;I love the product&#34;,
+&#34;rating&#34;: 5,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;name&#34;: &#34;iPhone 11 Pro 256GB Memory&#34;,
+&#34;description&#34;: &#34;Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life&#34;,
+&#34;id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;
+},
+&#34;user&#34;: &#34;61ebfcf9c48be56bbbd68aad&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T12:51:39.253Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T12:51:39.253Z&#34;,
+&#34;__v&#34;: 0
+}
+]
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Reviews-Getreviewsforbootcamp><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-Getreviewsforbootcamp><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get reviews for bootcamp</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/bootcamps/5d725a1b7b292f5f8ceff788/reviews</h4></a></div><div id=collapse-Reviews-Getreviewsforbootcamp class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Fetch reviews for a specific bootcamp</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Reviews_Getreviewsforbootcamp_0_Getreviewsforbootcamp>Get reviews for bootcamp</select><br><section id=req_res_Reviews_Getreviewsforbootcamp_0_Getreviewsforbootcamp style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/bootcamps/5d725a037b292f5f8ceff787/reviews</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 2,
+&#34;data&#34;: [
+{
+&#34;_id&#34;: &#34;5d7a514b5d2c12c7449be024&#34;,
+&#34;title&#34;: &#34;Great overall experience&#34;,
+&#34;text&#34;: &#34;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra feugiat mauris id viverra. Duis luctus ex sed facilisis ultrices. Curabitur scelerisque bibendum ligula, quis condimentum libero fermentum in. Aenean erat erat, aliquam in purus a, rhoncus hendrerit tellus. Donec accumsan justo in felis consequat sollicitudin. Fusce luctus mattis nunc vitae maximus. Curabitur semper felis eu magna laoreet scelerisque&#34;,
+&#34;rating&#34;: 7,
+&#34;bootcamp&#34;: &#34;5d725a037b292f5f8ceff787&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc037&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:24.940Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d7a514b5d2c12c7449be025&#34;,
+&#34;title&#34;: &#34;Not worth the money&#34;,
+&#34;text&#34;: &#34;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra feugiat mauris id viverra. Duis luctus ex sed facilisis ultrices. Curabitur scelerisque bibendum ligula, quis condimentum libero fermentum in. Aenean erat erat, aliquam in purus a, rhoncus hendrerit tellus. Donec accumsan justo in felis consequat sollicitudin. Fusce luctus mattis nunc vitae maximus. Curabitur semper felis eu magna laoreet scelerisque&#34;,
+&#34;rating&#34;: 5,
+&#34;bootcamp&#34;: &#34;5d725a037b292f5f8ceff787&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc038&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T19:47:24.940Z&#34;,
+&#34;__v&#34;: 0
+}
+]
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Reviews-Getsinglereview><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-Getsinglereview><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get single review</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/reviews/5d7a514b5d2c12c7449be024</h4></a></div><div id=collapse-Reviews-Getsinglereview class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Fetch a review by id and populate bootcamp name and description.</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Reviews_Getsinglereview_0_Getsinglereview>Get single review</select><br><section id=req_res_Reviews_Getsinglereview_0_Getsinglereview style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/reviews/5d7a514b5d2c12c7449be024</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;5d7a514b5d2c12c7449be024&#34;,
+&#34;title&#34;: &#34;Great overall experience&#34;,
+&#34;text&#34;: &#34;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra feugiat mauris id viverra. Duis luctus ex sed facilisis ultrices. Curabitur scelerisque bibendum ligula, quis condimentum libero fermentum in. Aenean erat erat, aliquam in purus a, rhoncus hendrerit tellus. Donec accumsan justo in felis consequat sollicitudin. Fusce luctus mattis nunc vitae maximus. Curabitur semper felis eu magna laoreet scelerisque&#34;,
+&#34;rating&#34;: 7,
+&#34;bootcamp&#34;: {
+&#34;_id&#34;: &#34;5d725a037b292f5f8ceff787&#34;,
+&#34;name&#34;: &#34;Codemasters&#34;,
+&#34;description&#34;: &#34;Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in full stack web development and data science&#34;,
+&#34;id&#34;: &#34;5d725a037b292f5f8ceff787&#34;
+},
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc037&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:59.301Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-Reviews-Updatereview><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-warning data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-Updatereview><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update review</strong> &nbsp;|&nbsp;
+<strong class="request-method border-warning">PUT</strong>
+&nbsp;
+{{URL}}/api/v1/reviews/61ed5a8f1552f3ba304f2849</h4></a></div><div id=collapse-Reviews-Updatereview class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update review in database.</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;rating&#34;: 8
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Reviews_Updatereview_0_Updatereview>Update review</select><br><section id=req_res_Reviews_Updatereview_0_Updatereview style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/reviews/61ed5a8f1552f3ba304f2849</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;rating&#34;: 8
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;61ed5a8f1552f3ba304f2849&#34;,
+&#34;title&#34;: &#34;The bootcamp is timely&#34;,
+&#34;text&#34;: &#34;Good Tutors&#34;,
+&#34;rating&#34;: 8,
+&#34;bootcamp&#34;: &#34;5d713a66ec8f2b88b8f830b8&#34;,
+&#34;user&#34;: &#34;5c8a1d5b0190b214360dc037&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:39:27.476Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=Users>Users
+<span class=badge>5</span></h3></div><div class=panel-body><p><p>CRUD functionalities for users only available to admin<div class=request-item><div class=panel-group id=accordion-Users><div class="panel panel-success" id=jump-Users-Createnewuser><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-success data-toggle=collapse data-parent=#accordion-Users href=#collapse-Users-Createnewuser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Create new user</strong> &nbsp;|&nbsp;
+<strong class="request-method border-success">POST</strong>
+&nbsp;
+{{URL}}/api/v1/users</h4></a></div><div id=collapse-Users-Createnewuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Add user to database (admin)</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;Test Johnson&#34;,
+&#34;email&#34;: &#34;maggietest@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;password&#34;: &#34;123456&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Users_Createnewuser_0_Createnewuser>Create new user</select><br><section id=req_res_Users_Createnewuser_0_Createnewuser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/users</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;Test Johnson&#34;,
+&#34;email&#34;: &#34;maggietest@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;password&#34;: &#34;123456&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;name&#34;: &#34;Test Johnson&#34;,
+&#34;email&#34;: &#34;maggietest@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;password&#34;: &#34;$2a$10$LR2JYQV5dGHioQfJhpv6L.y34javQwZcJ0wfbNCT1xbdjXL3Z1HxG&#34;,
+&#34;_id&#34;: &#34;61ed6336b91d9197dcd895f2&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T14:16:22.621Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>201</strong></section></div></div></div><div class="panel panel-danger" id=jump-Users-Deleteuser><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-danger data-toggle=collapse data-parent=#accordion-Users href=#collapse-Users-Deleteuser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete user</strong> &nbsp;|&nbsp;
+<strong class="request-method border-danger">DELETE</strong>
+&nbsp;
+{{URL}}/api/v1/users/61ed6336b91d9197dcd895f2</h4></a></div><div id=collapse-Users-Deleteuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Delete user from the database (admin)</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Users_Deleteuser_0_Deleteuser>Delete user</select><br><section id=req_res_Users_Deleteuser_0_Deleteuser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/users/61ed6336b91d9197dcd895f2</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Users-Getallusers><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Users href=#collapse-Users-Getallusers><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all users</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/users</h4></a></div><div id=collapse-Users-Getallusers class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get all users (admin)</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Users_Getallusers_0_Getallusers>Get all users</select><br><section id=req_res_Users_Getallusers_0_Getallusers style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/users</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 15,
+&#34;pagination&#34;: {},
+&#34;data&#34;: [
+{
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc040&#34;,
+&#34;name&#34;: &#34;Sara Kensing&#34;,
+&#34;email&#34;: &#34;sara@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.937Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc035&#34;,
+&#34;name&#34;: &#34;Stephanie Hanson&#34;,
+&#34;email&#34;: &#34;steph@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.936Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc036&#34;,
+&#34;name&#34;: &#34;Jerry Wiliams&#34;,
+&#34;email&#34;: &#34;jerry@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.936Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc037&#34;,
+&#34;name&#34;: &#34;Maggie Johnson&#34;,
+&#34;email&#34;: &#34;maggie@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.936Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc038&#34;,
+&#34;name&#34;: &#34;Barry Dickens&#34;,
+&#34;email&#34;: &#34;barry@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.936Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc039&#34;,
+&#34;name&#34;: &#34;Ryan Bolin&#34;,
+&#34;email&#34;: &#34;ryan@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.936Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc032&#34;,
+&#34;name&#34;: &#34;Sasha Ryan&#34;,
+&#34;email&#34;: &#34;sasha@gmail.com&#34;,
+&#34;role&#34;: &#34;publisher&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.935Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc033&#34;,
+&#34;name&#34;: &#34;Greg Harris&#34;,
+&#34;email&#34;: &#34;greg@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.935Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc034&#34;,
+&#34;name&#34;: &#34;Derek Glover&#34;,
+&#34;email&#34;: &#34;derek@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.935Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d7a514b5d2c12c7449be043&#34;,
+&#34;name&#34;: &#34;Publisher Account&#34;,
+&#34;email&#34;: &#34;publisher@gmail.com&#34;,
+&#34;role&#34;: &#34;publisher&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.934Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d7a514b5d2c12c7449be044&#34;,
+&#34;name&#34;: &#34;User Account&#34;,
+&#34;email&#34;: &#34;user@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.934Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d7a514b5d2c12c7449be045&#34;,
+&#34;name&#34;: &#34;John Doe&#34;,
+&#34;email&#34;: &#34;john@gmail.com&#34;,
+&#34;role&#34;: &#34;publisher&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.934Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d7a514b5d2c12c7449be046&#34;,
+&#34;name&#34;: &#34;Kevin Smith&#34;,
+&#34;email&#34;: &#34;kevin@gmail.com&#34;,
+&#34;role&#34;: &#34;publisher&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.934Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc031&#34;,
+&#34;name&#34;: &#34;Mary Williams&#34;,
+&#34;email&#34;: &#34;mary@gmail.com&#34;,
+&#34;role&#34;: &#34;publisher&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.934Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;5d7a514b5d2c12c7449be042&#34;,
+&#34;name&#34;: &#34;Admin Account&#34;,
+&#34;email&#34;: &#34;admin@gmail.com&#34;,
+&#34;role&#34;: &#34;admin&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.933Z&#34;,
+&#34;__v&#34;: 0
+}
+]
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Users-Getsingleuser><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Users href=#collapse-Users-Getsingleuser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get single user</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/users/5c8a1d5b0190b214360dc037</h4></a></div><div id=collapse-Users-Getsingleuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get single user by id (admin)</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Users_Getsingleuser_0_Getsingleuser>Get single user</select><br><section id=req_res_Users_Getsingleuser_0_Getsingleuser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/users/5c8a1d5b0190b214360dc037</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc037&#34;,
+&#34;name&#34;: &#34;Maggie Johnson&#34;,
+&#34;email&#34;: &#34;maggie@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.936Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-Users-Updateuser><div class=panel-heading><small class="pull-right text-muted">raw</small>
+<a class=text-warning data-toggle=collapse data-parent=#accordion-Users href=#collapse-Users-Updateuser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update user</strong> &nbsp;|&nbsp;
+<strong class="request-method border-warning">PUT</strong>
+&nbsp;
+{{URL}}/api/v1/users/5c8a1d5b0190b214360dc037</h4></a></div><div id=collapse-Users-Updateuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update user (admin)</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;maggie2@gmail.com&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Users_Updateuser_0_Updateuser>Update user</select><br><section id=req_res_Users_Updateuser_0_Updateuser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/users/5c8a1d5b0190b214360dc037</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;maggie2@gmail.com&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;5c8a1d5b0190b214360dc037&#34;,
+&#34;name&#34;: &#34;Maggie Johnson&#34;,
+&#34;email&#34;: &#34;maggie2@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-23T13:35:57.936Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div></div></div></div></div></div></div></div>
+<script src="./js/index.js"></script>
+<br><br><footer class="navbar-default navbar-fixed-bottom"><div class=container-fluid><div class="span12 text-center"><span data-toggle=tooltip title="If the application help you, please feel free to give a star to the project in github. Your star inspire me to work more on open-source projects like this!">Made with <em class=love-color>&#9829;</em> by <a href=https://github.com/thedevsaddam target=_blank class=text-muted>thedevsaddam</a> | Generated at: 2022-01-23 15:20:07 by <a href=https://github.com/thedevsaddam/docgen target=_blank class=text-muted>docgen</a></span></div></div></footer>
