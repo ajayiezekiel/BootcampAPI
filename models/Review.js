@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Bootcamp = require('../models/Bootcamp');
 
 const ReviewSchema = new mongoose.Schema({
     title: {
@@ -50,10 +51,10 @@ ReviewSchema.statics.getAverageRating = async function(bootcampId) {
             }
         }
     ]);
-    
+
     try {
         await this.model('Bootcamp').findByIdAndUpdate(bootcampId, {
-            averageRating: obj[0].averageRating
+            averageRating: Math.round(obj[0].averageRating)
         });
     } catch(err) {
         console.error(err)
@@ -62,12 +63,12 @@ ReviewSchema.statics.getAverageRating = async function(bootcampId) {
 
 // Call getAverageRating after save
 ReviewSchema.post('save', function() {
-    this.constructor.getAverageRating(this.bootcamp)
+    this.constructor.getAverageRating(this.bootcamp);
 });
 
 // Call getAverageRating before remove
 ReviewSchema.pre('remove', function() {
-    this.constructor.getAverageRating(this.bootcamp)
+    this.constructor.getAverageRating(this.bootcamp);
 });
 
 
